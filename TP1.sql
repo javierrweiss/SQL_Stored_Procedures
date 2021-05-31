@@ -3,6 +3,7 @@ use negocioWebRopa;
 
 -- ///////////////////   TABLA ARTICULOS ////////////////////////////////////////////////////
 
+DROP PROCEDURE IF EXISTS SP_Articulos_Insert_Min;
 DELIMITER //
 CREATE PROCEDURE SP_Articulos_Insert_Min(
 IN descripcion varchar(25),
@@ -18,6 +19,7 @@ DELIMITER ;
 
 CALL SP_Articulos_Insert_Min('Campera','ROPA', 50, 20500, 23000); 
 
+DROP PROCEDURE IF EXISTS SP_Articulos_Insert_Full;
 DELIMITER //
 CREATE PROCEDURE SP_Articulos_Insert_Full(
 IN descripcion varchar(25),
@@ -40,8 +42,8 @@ CALL SP_Articulos_Insert_Full('Musculosa', 'ROPA', 'negro', 'XL', 150, 50, 200, 
 
 select * from articulos;
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_Delete;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_Delete(
 IN Artid int)
        BEGIN
@@ -54,8 +56,8 @@ CALL SP_Articulos_Delete(11);
 
 SELECT * FROM articulos; 
 
-DELIMITER // 
 DROP PROCEDURE IF EXISTS SP_Articulos_Update_descripcion;
+DELIMITER // 
 CREATE PROCEDURE SP_Articulos_Update_Descripcion(
 IN valor varchar(50),
 ArtId int)
@@ -66,8 +68,8 @@ ArtId int)
    END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_Update_tipo;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_Update_Tipo(
 IN valor varchar(50),
 ArtId int)
@@ -78,8 +80,8 @@ ArtId int)
    END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_Update_color;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_Update_color(
 IN valor varchar(50),
 ArtId int)
@@ -90,8 +92,8 @@ ArtId int)
    END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_Update_talle;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_Update_talle(
 IN valor varchar(50),
 ArtId int)
@@ -102,8 +104,8 @@ ArtId int)
    END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_Update_stock;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_Update_stock(
 IN valor varchar(50),
 ArtId int)
@@ -114,8 +116,8 @@ ArtId int)
    END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_Update_stockMin;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_Update_stockMin(
 IN valor varchar(50),
 ArtId int)
@@ -126,8 +128,8 @@ ArtId int)
    END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_Update_stockMax;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_Update_stockMax(
 IN valor varchar(50),
 ArtId int)
@@ -138,8 +140,8 @@ ArtId int)
    END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_Update_costo;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_Update_costo(
 IN valor varchar(50),
 ArtId int)
@@ -150,8 +152,8 @@ ArtId int)
    END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_Update_precio;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_Update_precio(
 IN valor varchar(50),
 ArtId int)
@@ -162,8 +164,8 @@ ArtId int)
    END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_Update;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_Update(
 IN columna varchar(20),
 valor varchar(50),
@@ -191,8 +193,8 @@ CALL SP_Articulos_Update('tipo', 'CALZADO', 2);
 
 SELECT * FROM articulos;
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_All;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_All()
        BEGIN
         SELECT *
@@ -202,8 +204,8 @@ DELIMITER ;
 
 CALL SP_Articulos_All(); 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Articulos_Reponer;
+DELIMITER //
 CREATE PROCEDURE SP_Articulos_Reponer(
 IN articulo varchar(30),
 ArtId int,
@@ -222,8 +224,8 @@ SELECT * FROM articulos;
 
 -- ////////////////// TABLA FACTURAS ////////////////////////////////////////////////////////////
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Facturas_Insert;
+DELIMITER //
 CREATE PROCEDURE SP_Facturas_Insert(
 IN letra enum('A','B','C'),
 numero int,
@@ -240,8 +242,8 @@ CALL SP_Facturas_Insert('B',907,'2020-09-09','TARJETA',5);
 
 SELECT * FROM facturas; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Facturas_Delete;
+DELIMITER //
 CREATE PROCEDURE SP_Facturas_Delete(
 IN FactId int)
        BEGIN
@@ -254,8 +256,8 @@ CALL SP_Facturas_Delete(6);
 
 SELECT * FROM facturas; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Facturas_Update_letra;
+DELIMITER //
 CREATE PROCEDURE SP_Facturas_Update_letra(
 IN valor varchar(35),
 FactId int)
@@ -266,8 +268,8 @@ FactId int)
    END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Facturas_Update_numero;
+DELIMITER //
 CREATE PROCEDURE SP_Facturas_Update_numero(
 IN valor varchar(35),
 FactId int)
@@ -278,8 +280,8 @@ FactId int)
        END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Facturas_Update_fecha;
+DELIMITER //
 CREATE PROCEDURE SP_Facturas_Update_fecha(
 IN valor varchar(35),
 FactId int)
@@ -290,8 +292,8 @@ FactId int)
        END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Facturas_Update_medioDePago;
+DELIMITER //
 CREATE PROCEDURE SP_Facturas_Update_medioDePago(
 IN valor varchar(35),
 FactId int)
@@ -302,8 +304,8 @@ FactId int)
        END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Facturas_Update_IdCliente;
+DELIMITER //
 CREATE PROCEDURE SP_Facturas_Update_IdCliente(
 IN valor varchar(35),
 FactId int)
@@ -314,8 +316,8 @@ FactId int)
        END //
 DELIMITER ; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Facturas_Update;
+DELIMITER //
 CREATE PROCEDURE SP_Facturas_Update(
 IN columna varchar(35),
 valor varchar(35),
@@ -337,8 +339,8 @@ CALL SP_Facturas_Update('medioDePago', 'EFECTIVO', 5);
 
 SELECT * FROM facturas; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Facturas_All;
+DELIMITER //
 CREATE PROCEDURE SP_Facturas_All()
        BEGIN
         SELECT *
@@ -348,8 +350,8 @@ DELIMITER ;
 
 CALL SP_Facturas_All(); 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Facturas_AgregarDetalle;
+DELIMITER //
 CREATE PROCEDURE SP_Facturas_AgregarDetalle(
 IN idArticulo int,
 idFactura int,
@@ -365,11 +367,10 @@ CALL SP_Facturas_AgregarDetalle(10, 5, 45000, 12);
 
 SELECT * FROM detalles; 
 
--- ///////////////// TABLA DETALLES /////////////////////////////////////////////////////////
-describe detalles; 
+-- ///////////////// TABLA DETALLES //////////////////////////////////////////////////////// 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Detalles_Delete;
+DELIMITER //
 CREATE PROCEDURE SP_Detalles_Delete(
 IN DetId int)
        BEGIN
@@ -382,8 +383,8 @@ CALL SP_Detalles_Delete(9);
 
 SELECT * FROM detalles; 
 
-DELIMITER //
 DROP PROCEDURE IF EXISTS SP_Detalles_All;
+DELIMITER //
 CREATE PROCEDURE SP_Detalles_All()
        BEGIN
         SELECT *
